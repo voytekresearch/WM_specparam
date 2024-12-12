@@ -1,0 +1,17 @@
+README.md
+setup.py
+colourfulbirds/__init__.py
+colourfulbirds/datahelper.py
+colourfulbirds/exp1_EEGperCondition.py
+colourfulbirds/exp1_functionsforFOOOF.py
+colourfulbirds/exp1_functionsforReplication.py
+colourfulbirds/exp1_settings.py
+colourfulbirds/exp2_EEGperCondition.py
+colourfulbirds/exp2_functionsforFOOOF.py
+colourfulbirds/exp2_functionsforReplication.py
+colourfulbirds/exp2_settings.py
+colourfulbirds.egg-info/PKG-INFO
+colourfulbirds.egg-info/SOURCES.txt
+colourfulbirds.egg-info/dependency_links.txt
+colourfulbirds.egg-info/requires.txt
+colourfulbirds.egg-info/top_level.txt
