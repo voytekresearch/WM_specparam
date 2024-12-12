@@ -16,13 +16,13 @@ https://osf.io/8xuk3/
 
 
 ## What is this project about?
-Colourfulbirds is a FOOOF project that uses data from Adam et al. (2018). The data is collected from a visual working memory task. 
+Colourfulbirds is a project using data from Adam et al. (2018). The data were collected from a visual working memory task. 
 <li>Experiment 1: different set-sizes and occipital alpha power. </li>
 <li>Experiment 2: set-size kept at 6 items. Look at the performance within subjects (good vs. poor). Interested in occipital alpha power, and midline frontal theta power. </li>
 
 ### Replicating the original results
 Our first goal was to replicate the results fom Adam et al. (2018). This was to verify that we understand the data structure and were able to combine the behavioral data correctly with the EEG data. <br>
-The replicated results can be found in the "02-Replication.." notebooks <br>
+The replicated results can be found in the "replicated_analysis.ipynb" notebook <br>
 Steps: <ol>
     <li>Delete all the to be rejected trials. This is based on the pre-processing from the original paper</li>
     <li>Select EEG data based on set-size/performance/side</li>
@@ -30,34 +30,18 @@ Steps: <ol>
     <li>Baseline per trial and electrode --> Baselined hilbert transfer</li>
     <li>Average the hilbert transfers per condition and per subject</li>
     <li>Lateralize the data: contralateral - ipsilateral</li>
-    
-### Statistical analysis -- original results    
-Then, we performed the same statistical analysis in the "03-StatisticalAnalysis.." notebooks. Where we create the dataframes and save them to analyize it in JASP
 
-### Our approach -- FOOOF
-This part is of course the most interesting! <br>
+### Our approach -- Spectral parameterization
+To research the independent contributions of oscillatory and aperiodic activity! <br>
 Steps: <ol>
     <li>Delete all the to be rejected trials. This is based on the pre-processing from the original paper</li>
     <li>Select EEG data based on set-size/performance</li>
     <li>Per electrode group and per trial, calculate the PSD (using neurodsp) for the retention period and the baseline period</li>
-    <li>Fooof the PSDs and save the peak values and aperiodic offset and exponent</li>
+    <li>specparam the PSDs and save the peak values and aperiodic offset and exponent</li>
     <li>Subtract the baseline period output from the retention period output</li>
-    <li>Lateralize the data: contralateral - ipsilateral</li>
     
-### Statistical analysis -- FOOOF
-Statistical tests are performed on all 4 fooof components: <br>
-<ul>
-    <li>Power (relative to 1/f fit)</li>
-    <li>Central Frequency</li>
-    <li>1/f exponent</li>
-    <li>1/f offset</li>
-    </ul>
+### Statistical analysis -- Spectral parameterization
+Statistical tests are performed on peak height, aperiodic exponent, aperiodic offset, bandpower, and abundance (% of trials with an oscillation peak): <br>
     
 A 2-way RM ANOVA is used to analyze the data for the occipital electrodes (alpha). <br>
-A Pairwise t-test is used for midline frontal theta.
-
-Furthermore, we're looking into a regression instead of a binary division of performance. <br>
-The overall performance is measured as: total correct responses / (#trials * 6) <br>
-And the power, 1/f exponent and offset are calculated over all trials as well (contra vs ipsi).
-
---> Nothing is significant, so we're dropping this idea
+A Pairwise t-test is used for midline frontal theta in Experiment 2, and a 1-way ANOVA in Experiment 1
